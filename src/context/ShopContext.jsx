@@ -13,11 +13,11 @@ const ShopContextProvider =(props)=>{
   
   const [all_product,setAll_Product] = useState([])
   useEffect(()=>{
- fetch('http://localhost:3100/allproducts')
+ fetch('https://backend-als1.onrender.com/allproducts')
  .then((response)=>response.json())
  .then((data)=>setAll_Product(data))
  if(localStorage.getItem('auth-token')){
-  fetch('http://localhost:3100/getcart',{
+  fetch('https://backend-als1.onrender.com/getcart',{
     method:'POST',
     headers:{
       Accept:'application/json',
@@ -35,7 +35,7 @@ const ShopContextProvider =(props)=>{
   const addToCart = (itemId)=>{
     setCartItems((prev)=>({...prev,[itemId]:prev[itemId]+1}))
     if(localStorage.getItem('auth-token')){
-      fetch('http://localhost:3100/addtocart',{
+      fetch('https://backend-als1.onrender.com/addtocart',{
         method:'POST',
         headers:{
           Accept:'application/json',
@@ -52,7 +52,7 @@ const ShopContextProvider =(props)=>{
   const removeFromCart = (itemId)=>{
     setCartItems((prev)=>({...prev,[itemId]:prev[itemId]-1}))
     if(localStorage.getItem('auth-token')){
-      fetch('http://localhost:3100/removefromcart',{
+      fetch('https://backend-als1.onrender.com/removefromcart',{
         method:'POST',
         headers:{
           Accept:'application/json',
